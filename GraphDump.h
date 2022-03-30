@@ -11,14 +11,29 @@ const double LINE_COLOR_COEF = 0.8;
 
 enum NodeShape
 {
-    NONE_SHAPE      = 0,
-    RECORD_SHAPE    = 1,
-    RECTANGLE_SHAPE = 2
+    NONE_SHAPE              = 0,
+    RECORD_SHAPE            = 1,
+    RECTANGLE_SHAPE         = 2,
+    ELLIPPSE_SHAPE          = 3,
+    POINT_SHAPE             = 4,
+    EGG_SHAPE               = 5,
+    DIAMOND_SHAPE           = 6,
+    PARALLELOGRAM_SHAPE     = 7,
+    TRIANGLE_SHAPE          = 8,
+    INVTRIANGLE_SHAPE       = 9
 };
 
-const char NODE_SHAPES[][100] = {"none",
-                                "record",
-                                "rectangle"};
+const char NODE_SHAPES[][sizeof ("parallelogramm")] =
+   {"none",
+    "record",
+    "rectangle",
+    "ellipse",
+    "point",
+    "egg",
+    "diamond",
+    "parallelogram",
+    "triangle",
+    "invtriangle"};
 
 typedef struct Graph_
 {

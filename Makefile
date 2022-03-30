@@ -31,18 +31,14 @@ $(EXECUTABLE): $(OBJECTS) $(EXEDIR)
 $(OBJECTS) : $(OBJDIR)/%.o : %.cpp $(OBJDIR) 
 	$(CC) -c $(CFLAGS) $< -o $@
 
-lib$(EXECUTABLE).a : $(filter-out $(OBJDIR)/main.o, $(OBJECTS)) $(OBJDIR)/$(LIBDIR)
-	cd $(OBJDIR)/$(LIBDIR); ar x ../../$(LIBDIR)/$(LIBRARIES)
-	ar r lib$(EXECUTABLE).a $(filter-out $(OBJDIR)/main.o, $(OBJECTS)) $(OBJDIR)/$(LIBDIR)/*.o
+lib$(EXECUTABLE).a : $(filter-out $(OBJDIR)/main.o, $(OBJECTS))
+	ar r lib$(EXECUTABLE).a $(filter-out $(OBJDIR)/main.o, $(OBJECTS))
 
 $(EXEDIR) :
 	mkdir $(EXEDIR)
 
 $(OBJDIR) :
 	mkdir $(OBJDIR)
-
-$(OBJDIR)/$(LIBDIR) :
-	mkdir $(OBJDIR)/$(LIBDIR)
 
 clear:
 	rm -r -d $(OBJDIR)
