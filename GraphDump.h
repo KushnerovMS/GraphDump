@@ -3,11 +3,9 @@
 
 #include <stdio.h>
 
-//const char NODE_STYLE_STRUCTURE[] = "record";
-
 const double LINE_COLOR_COEF = 0.8;
 
-//const unsigned long GRAPH_BACKGROUND_COLOR = 0x909090ff;
+const char DEFAULT_DIR[] = "./GraphDump/";
 
 enum NodeShape
 {

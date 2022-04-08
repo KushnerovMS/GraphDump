@@ -206,11 +206,15 @@ void GraphDraw (Graph* graph, const char* name, const char* format)
     assert (name);
     assert (format);
 
+
     fprintf (graph -> file, "}");
 
     fclose (graph -> file);
 
     char command[1000] = {};
+
+    sprintf (command, "mkdir -p %s", DEFAULT_DIR);  
+    system (command);
 
     if (strcmp (format, "svg") == 0)
     {
@@ -219,13 +223,15 @@ void GraphDraw (Graph* graph, const char* name, const char* format)
         sprintf (command, "dot %s -T%s -o %s", graph -> name, format, tmpname);  
         system (command);
 
-        _replaceImgWithSvg (tmpname, name);
+        char newName[1000] = {};
+        sprintf (newName, "%s%s", DEFAULT_DIR, name);
+        _replaceImgWithSvg (tmpname, newName);
 
         free (tmpname);
     }
     else
     {
-        sprintf (command, "dot %s -T%s -o %s", graph -> name, format, name);  
+        sprintf (command, "dot %s -T%s -o %s%s", graph -> name, DEFAULT_DIR, format, name);  
         system (command);
     }
 
@@ -296,14 +302,14 @@ void GraphAddImage(const Graph* graph, const void* id, const char* imageName)
 
     if (imageName)
         fprintf (graph -> file,
-                "image = \"%s\"\n"
+                "image = \"%s%s\"\n"
                 "]\n",
-                id, imageName);
+                DEFAULT_DIR, imageName);
     else
         fprintf (graph -> file,
-                "image = \"%p.csv\"\n"
+                "image = \"%s%p.csv\"\n"
                 "]\n",
-                id, id);
+                DEFAULT_DIR, id);
 
 }
 
