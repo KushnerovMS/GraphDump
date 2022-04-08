@@ -20,9 +20,9 @@ int main ()
     GraphEdge edge = {};
 
     GraphAddNode (graph, &node1, "node%d", 1);
-    GraphAddNode (graph, &node2);
+    GraphAddNode (graph, &node2, "");
 
-    GraphAddEdge (graph, &edge, node1.id, "", node2.id, "", 1);
+    GraphAddEdge (graph, &edge, node1.id, "", node2.id, "", 1, "");
 
     GraphDraw (graph, "img1.svg", "svg");
 
@@ -30,9 +30,9 @@ int main ()
     graph = GraphOpen ();
 
     GraphAddNode (graph, &node1, "node%d", 1);
-    GraphAddNode (graph, &node2);
+    GraphAddNode (graph, &node2, "");
 
-    GraphAddEdge (graph, &edge, node1.id, "", node2.id, "", 1);
+    GraphAddEdge (graph, &edge, node1.id, "", node2.id, "", 1, "");
 
     GraphDraw (graph, "img2.svg", "svg");
 
@@ -45,10 +45,10 @@ int main ()
     GraphAddNode (graph, &node2, "node2");
 
     GraphAddImage (graph, "img1.svg", "img1.svg");
-    GraphAddEdge (graph, &edge, node1.id, "", "img1.svg", "", 1);
+    GraphAddEdge (graph, &edge, node1.id, "", "img1.svg", "", 1, "");
 
     GraphAddImage (graph, "img2.svg", "img2.svg");
-    GraphAddEdge (graph, &edge, node2.id, "", "img2.svg", "", 1);
+    GraphAddEdge (graph, &edge, node2.id, "", "img2.svg", "", 1, "");
 
     GraphDraw (graph, "test.svg", "svg");
 

@@ -280,11 +280,9 @@ void GraphAddNode (const Graph* graph, const GraphNode* node, const char* labelf
         va_start (ap, labelfrmt);
         vfprintf (graph -> file, labelfrmt, ap);
         va_end (ap);
-    }
-    else
-        fprintf (graph -> file, "%p", node -> id);
 
-    fprintf (graph -> file, "\"\n]\n");
+        fprintf (graph -> file, "\"\n]\n");
+    }
 }
    
 void GraphAddImage(const Graph* graph, const void* id, const char* imageName)
@@ -303,7 +301,7 @@ void GraphAddImage(const Graph* graph, const void* id, const char* imageName)
                 id, imageName);
     else
         fprintf (graph -> file,
-                "image = \"%p\"\n"
+                "image = \"%p.csv\"\n"
                 "]\n",
                 id, id);
 
@@ -339,9 +337,9 @@ void GraphAddEdge (const Graph* graph, const GraphEdge* edge,
         va_start (ap, labelfrmt);
         vfprintf (graph -> file, labelfrmt, ap);
         va_end (ap);
-    }
 
-    fprintf (graph -> file, "\"]\n");
+        fprintf (graph -> file, "\"]\n");
+    }
 }
 
 
@@ -370,8 +368,6 @@ void GraphBeginCluster (const Graph* graph, const GraphCluster* cluster, const c
         vfprintf (graph -> file, labelfrmt, ap);
         va_end (ap);
     }
-    else
-        fprintf (graph -> file, "%p", cluster -> id);
 
     fprintf (graph -> file, "\"\n");
 }
